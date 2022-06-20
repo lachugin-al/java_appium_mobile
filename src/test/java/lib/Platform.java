@@ -19,17 +19,20 @@ public class Platform {
             Appium_URL = "http://127.0.0.1:4723/wd/hub";
 
     private static Platform instance;
-    private Platform() {}
 
-    public static Platform getInstance()
-    {
-        if(instance == null) {
+    private Platform() {
+    }
+
+    public static Platform getInstance() {
+        if (instance == null) {
             instance = new Platform();
         }
         return instance;
     }
 
-    public boolean isAndroid() { return isPlatform(PLATFORM_ANDROID); }
+    public boolean isAndroid() {
+        return isPlatform(PLATFORM_ANDROID);
+    }
 
     public boolean isIOS() {
         return isPlatform(PLATFORM_IOS);
@@ -40,37 +43,34 @@ public class Platform {
     }
 
 
-    public RemoteWebDriver getDriver() throws Exception
-    {
+    public RemoteWebDriver getDriver() throws Exception {
         URL URL = new URL(Appium_URL);
-        if(this.isAndroid()){
+        if (this.isAndroid()) {
             return new AndroidDriver(URL, this.getAndroidDesiredCapabilities());
-        } else if(this.isIOS()){
+        } else if (this.isIOS()) {
             return new IOSDriver(URL, this.getIOSDesiredCapabilities());
-        } else if(this.isMw()){
+        } else if (this.isMw()) {
             return new ChromeDriver(this.getMwChromeOptions());
         } else {
             throw new Exception("Cannot detected type of the Driver. Platform value: " + this.getPlatformVar());
-    }
+        }
     }
 
-    private DesiredCapabilities getAndroidDesiredCapabilities()
-    {
+    private DesiredCapabilities getAndroidDesiredCapabilities() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
-        capabilities.setCapability("platformName","Android");
-        capabilities.setCapability("deviceName","AndroidTestDevice");
-        capabilities.setCapability("platformVersion","9");
-        capabilities.setCapability("automationName","Appium");
-        capabilities.setCapability("appPackage","org.wikipedia");
+        capabilities.setCapability("platformName", "Android");
+        capabilities.setCapability("deviceName", "AndroidTestDevice");
+        capabilities.setCapability("platformVersion", "11.0");
+        capabilities.setCapability("automationName", "Appium");
+        capabilities.setCapability("appPackage", "org.wikipedia");
         //       capabilities.setCapability("appWaitActivity",".onboarding.InitialOnboardingActivity");
-        capabilities.setCapability("appActivity",".main.MainActivity");
-        capabilities.setCapability("app","/Users/lachugin/IdeaProjects/java_appium_mobile/apps/org.wikipedia.com.apk");
+        capabilities.setCapability("appActivity", ".main.MainActivity");
+        capabilities.setCapability("app", "/Users/lachugin/IdeaProjects/java_appium_mobile/apps/org.wikipedia.com.apk");
         return capabilities;
     }
 
-    private DesiredCapabilities getIOSDesiredCapabilities()
-    {
+    private DesiredCapabilities getIOSDesiredCapabilities() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "iOS");
         capabilities.setCapability("deviceName", "iPhone SE");
@@ -79,15 +79,14 @@ public class Platform {
         return capabilities;
     }
 
-    private ChromeOptions getMwChromeOptions()
-    {
+    private ChromeOptions getMwChromeOptions() {
         Map<String, Object> deviceMetrics = new HashMap<String, Object>();
         deviceMetrics.put("width", 360);
         deviceMetrics.put("height", 640);
         deviceMetrics.put("pixelRatio", 640);
 
         Map<String, Object> mobileEmulation = new HashMap<String, Object>();
-        mobileEmulation.put("userAgent", "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19" );
+        mobileEmulation.put("userAgent", "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19");
 
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("window-size=340,640");
@@ -95,14 +94,12 @@ public class Platform {
         return chromeOptions;
     }
 
-    private boolean isPlatform(String my_platform)
-    {
+    private boolean isPlatform(String my_platform) {
         String platform = getPlatformVar();
         return my_platform.equals(platform);
     }
 
-    public String getPlatformVar()
-    {
+    public String getPlatformVar() {
         return System.getenv("PLATFORM");
     }
 }

@@ -9,8 +9,7 @@ public class iOSNavigationUI extends NavigationUI {
         MY_LIST_NAVIGATE_BUTTON = "id:Saved";
     }
 
-    public iOSNavigationUI(RemoteWebDriver driver)
-    {
+    public iOSNavigationUI(RemoteWebDriver driver) {
         super(driver);
     }
 }

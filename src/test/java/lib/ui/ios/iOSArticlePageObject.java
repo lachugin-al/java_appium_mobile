@@ -12,8 +12,7 @@ public class iOSArticlePageObject extends ArticlePageObject {
         CLOSE_ARTICLE_BUTTON = "id:Back";
     }
 
-    public iOSArticlePageObject(RemoteWebDriver driver)
-    {
+    public iOSArticlePageObject(RemoteWebDriver driver) {
         super(driver);
     }
 }

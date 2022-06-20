@@ -9,8 +9,7 @@ public class MWNavigationUI extends NavigationUI {
         OPEN_NAVIGATION = "css:label[data-event-name='ui.mainmenu']";
     }
 
-    public MWNavigationUI(RemoteWebDriver driver)
-    {
+    public MWNavigationUI(RemoteWebDriver driver) {
         super(driver);
     }
 }

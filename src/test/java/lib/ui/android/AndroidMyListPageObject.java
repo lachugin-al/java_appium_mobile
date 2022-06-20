@@ -10,7 +10,7 @@ public class AndroidMyListPageObject extends MyListPageObject {
         ARTICLE_NAME_IN_MY_LIST_TPL = "xpath://*[@text = '{SUBSTRING}']";
     }
 
-    public AndroidMyListPageObject (RemoteWebDriver driver){
+    public AndroidMyListPageObject(RemoteWebDriver driver) {
         super(driver);
     }
 }

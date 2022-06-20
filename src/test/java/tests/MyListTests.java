@@ -19,8 +19,7 @@ public class MyListTests extends CoreTestCase {
             password = "2511Qaz!";
 
     @Test
-    public void testSaveFirstArticleToMyList()
-    {
+    public void testSaveFirstArticleToMyList() {
 
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
 
@@ -32,13 +31,13 @@ public class MyListTests extends CoreTestCase {
 
 //---------------------Добавление первого элемента-------------------------------------------
 
-        if(Platform.getInstance().isAndroid()){
+        if (Platform.getInstance().isAndroid()) {
             ArticlePageObject.addFirstArticleToMyList(name_of_folder);
-        }else {
+        } else {
             ArticlePageObject.addArticleToMySaved();
         }
 
-        if(Platform.getInstance().isMw()){
+        if (Platform.getInstance().isMw()) {
             AuthorizationPageObject Auth = new AuthorizationPageObject(driver);
             Auth.clickAithButton();
             Auth.enterLoginData(login, password);
@@ -62,7 +61,7 @@ public class MyListTests extends CoreTestCase {
 
         MyListPageObject MyListPageObject = MyListPageObjectFactory.get(driver);
 
-        if(Platform.getInstance().isAndroid()){
+        if (Platform.getInstance().isAndroid()) {
             MyListPageObject.openFolderByName(name_of_folder);
         }
 
@@ -70,12 +69,12 @@ public class MyListTests extends CoreTestCase {
     }
 
 
-   //------------------------------------Ex17: Рефакторинг тестов после --------------------------------------------------------
+    //------------------------------------Ex17: Рефакторинг тестов после --------------------------------------------------------
     @Test
     public void testSaveTwoArticleToMyList() {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
 
-        String  searchText = "Ford",
+        String searchText = "Ford",
                 first_article = "Ford Mustang",
                 second_article = "Ford GT",
                 name_of_folder = "FordList";
@@ -87,15 +86,15 @@ public class MyListTests extends CoreTestCase {
         ArticlePageObject.waitForTitleElement();
         SearchPageObject.clickByArticleWithSubstring(first_article);
 
-    //---------------------Добавление первого элемента-------------------------------------------
-        if(Platform.getInstance().isAndroid()){
+        //---------------------Добавление первого элемента-------------------------------------------
+        if (Platform.getInstance().isAndroid()) {
             ArticlePageObject.addFirstArticleToMyList(name_of_folder);
-        }else {
+        } else {
             ArticlePageObject.addArticleToMySaved();
         }
 
 
-        if(Platform.getInstance().isMw()){
+        if (Platform.getInstance().isMw()) {
             AuthorizationPageObject Auth = new AuthorizationPageObject(driver);
             Auth.clickAithButton();
             Auth.enterLoginData(login, password);
@@ -111,13 +110,13 @@ public class MyListTests extends CoreTestCase {
 
         ArticlePageObject.closeArticle();
 
-    //------------добавление второго элемента----------------------------------------------------
+        //------------добавление второго элемента----------------------------------------------------
 
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine(searchText);
         SearchPageObject.clickByArticleWithSubstring(second_article);
 
-        if(Platform.getInstance().isMw()){
+        if (Platform.getInstance().isMw()) {
             AuthorizationPageObject Auth = new AuthorizationPageObject(driver);
             Auth.clickAithButton();
             Auth.enterLoginData(login, password);
@@ -132,27 +131,27 @@ public class MyListTests extends CoreTestCase {
         }
 
 
-        if(Platform.getInstance().isAndroid()){
+        if (Platform.getInstance().isAndroid()) {
             ArticlePageObject.addNextArticleToMyList(name_of_folder);
-        }else {
+        } else {
             ArticlePageObject.addArticleToMySaved();
         }
         ArticlePageObject.closeArticle();
 
-    //------------------Удаление элемента из списка-----------------------------------------------
+        //------------------Удаление элемента из списка-----------------------------------------------
         NavigationUI NavigationUI = NavigationUIFactory.get(driver);
         NavigationUI.clickMyList();
 
         MyListPageObject MyListPageObject = MyListPageObjectFactory.get(driver);
 
-        if(Platform.getInstance().isAndroid()){
+        if (Platform.getInstance().isAndroid()) {
             MyListPageObject.openFolderByName(name_of_folder);
         }
 
         MyListPageObject.deleteArticleFromMyList(first_article);
 
 
-      //  Не выходя на главный экран, можно в существующем списке сделать поиск статьи которую ожидаем увидеть
+        //  Не выходя на главный экран, можно в существующем списке сделать поиск статьи которую ожидаем увидеть
         SearchPageObject.waitForSearchResult(second_article);
     }
 

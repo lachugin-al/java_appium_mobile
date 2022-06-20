@@ -4,12 +4,12 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 abstract public class SearchPageObject extends MainPageObject {
 
-    protected static  String
-            SEARCH_INIT_ELEMENT ,
+    protected static String
+            SEARCH_INIT_ELEMENT,
             SEARCH_INPUT,
             SEARCH_CANCEL_BUTTON,
-            SEARCH_RESULT_BY_SUBSTRING_TPL ,
-            SEARCH_RESULT_ELEMENT_AMOUNT_TPL ,
+            SEARCH_RESULT_BY_SUBSTRING_TPL,
+            SEARCH_RESULT_ELEMENT_AMOUNT_TPL,
             SEARCH_RESULT_ELEMENT,
             EMPTY_RESULT_LABEL;
 
@@ -22,9 +22,8 @@ abstract public class SearchPageObject extends MainPageObject {
         return SEARCH_RESULT_BY_SUBSTRING_TPL.replace("{SUBSTRING}", substring);
     }
 
-    private static String getSearchResultAmountEelement(String search_line)
-    {
-        return SEARCH_RESULT_ELEMENT_AMOUNT_TPL.replace("{SUBSRING}",search_line);
+    private static String getSearchResultAmountEelement(String search_line) {
+        return SEARCH_RESULT_ELEMENT_AMOUNT_TPL.replace("{SUBSRING}", search_line);
     }
     /* TEMPLATE METHODS*/
 
@@ -69,15 +68,13 @@ abstract public class SearchPageObject extends MainPageObject {
         );
 
         return this.getAmountOfElements(search_result_locator);
-     }
+    }
 
-    public void waitForEmptyResultLabel()
-    {
+    public void waitForEmptyResultLabel() {
         this.waitForElementPresent(EMPTY_RESULT_LABEL, "Cannot find empty result label", 10);
     }
 
-    public void assertThereIsNoResultOfSearch(String search_line)
-    {
+    public void assertThereIsNoResultOfSearch(String search_line) {
         String search_result_locator = getSearchResultAmountEelement(search_line);
         this.assertElementNotPresent(search_result_locator, "We supposed not to find any results");
     }

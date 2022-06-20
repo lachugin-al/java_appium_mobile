@@ -11,10 +11,9 @@ import org.junit.Test;
 public class ChangeAppConditionTests extends CoreTestCase {
 
     @Test
-    public void testChangeScreenOrientationOnScreen()
-    {
+    public void testChangeScreenOrientationOnScreen() {
 
-        if(Platform.getInstance().isMw()){
+        if (Platform.getInstance().isMw()) {
             return;
         }
 
@@ -52,8 +51,7 @@ public class ChangeAppConditionTests extends CoreTestCase {
     }
 
     @Test
-    public void  testCheckSearchArticleInBackground()
-    {
+    public void testCheckSearchArticleInBackground() {
         String search_line = "Java";
 
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);

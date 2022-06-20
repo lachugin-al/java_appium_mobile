@@ -9,7 +9,7 @@ public class iOSMyListPageObject extends MyListPageObject {
         ARTICLE_NAME_IN_MY_LIST_TPL = "xpath://XCUIElementTypeLink[contains(@name = '{SUBSTRING}')]";
     }
 
-    public iOSMyListPageObject (RemoteWebDriver driver){
+    public iOSMyListPageObject(RemoteWebDriver driver) {
         super(driver);
     }
 }

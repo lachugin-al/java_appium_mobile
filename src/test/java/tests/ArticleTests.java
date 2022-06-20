@@ -8,11 +8,10 @@ import lib.ui.factories.SearchPageObjectFactory;
 import org.junit.Test;
 import org.openqa.selenium.WebElement;
 
-public class ArticleTests  extends CoreTestCase {
+public class ArticleTests extends CoreTestCase {
 
     @Test
-    public void testCompareArticleTitle()
-    {
+    public void testCompareArticleTitle() {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
 
         SearchPageObject.initSearchInput();
@@ -31,8 +30,7 @@ public class ArticleTests  extends CoreTestCase {
     }
 
     @Test
-    public void testSwipeArticle()
-    {
+    public void testSwipeArticle() {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
 
         SearchPageObject.initSearchInput();
@@ -46,8 +44,7 @@ public class ArticleTests  extends CoreTestCase {
 
 
     @Test
-    public void testAssertTitle()
-    {
+    public void testAssertTitle() {
 
         String searchText = "Java";
 

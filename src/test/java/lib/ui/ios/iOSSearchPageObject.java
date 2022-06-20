@@ -16,7 +16,7 @@ public class iOSSearchPageObject extends SearchPageObject {
         EMPTY_RESULT_LABEL = "xpath://XCUIElementTypeStaticText[@name = 'No results found']";
     }
 
-    public iOSSearchPageObject (RemoteWebDriver driver){
+    public iOSSearchPageObject(RemoteWebDriver driver) {
         super(driver);
     }
 

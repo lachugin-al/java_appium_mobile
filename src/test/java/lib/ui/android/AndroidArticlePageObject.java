@@ -3,8 +3,7 @@ package lib.ui.android;
 import lib.ui.ArticlePageObject;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-public class AndroidArticlePageObject extends ArticlePageObject
-{
+public class AndroidArticlePageObject extends ArticlePageObject {
 
     static {
         TITLE = "xpath://*[@resource-id='org.wikipedia:id/page_list_item_title']";
@@ -17,8 +16,7 @@ public class AndroidArticlePageObject extends ArticlePageObject
         CLOSE_ARTICLE_BUTTON = "xpath://*[@resource-id='org.wikipedia:id/page_toolbar']/android.widget.ImageButton]";
     }
 
-    public AndroidArticlePageObject(RemoteWebDriver driver)
-    {
+    public AndroidArticlePageObject(RemoteWebDriver driver) {
         super(driver);
     }
 }
